@@ -49,7 +49,7 @@ const Maker = () => {
         </CardContent>
       </Card>
       <Button className="w-full" variant="contained">
-        Next
+        Take Now
       </Button>
     </div>
   );
