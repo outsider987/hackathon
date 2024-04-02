@@ -1,10 +1,16 @@
 import { WalletProvider } from "./Wallet";
+import { GlobalProvider } from "./global";
+
 type RootContextProviderProps = {
   children?: React.ReactNode;
 };
 const RootContextProvider: React.FC<RootContextProviderProps> = ({
   children,
 }) => {
-  return <WalletProvider>{children}</WalletProvider>;
+  return (
+    <GlobalProvider>
+      <WalletProvider>{children}</WalletProvider>
+    </GlobalProvider>
+  );
 };
 export default RootContextProvider;

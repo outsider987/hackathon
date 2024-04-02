@@ -53,8 +53,6 @@ const WalletProvider = ({ children }) => {
     try {
 
       const connection = new Connection(clusterApiUrl("devnet"));
-      const address = new PublicKey('6GGih5hz594VDEgdZxQG2td8bJignRGyDxWXGqaoc8k3');
-      const balance = await connection.getBalance(address);
       console.log("balance", balance);
     } catch (error) {
       console.error("Error connecting to Metamask:", error);

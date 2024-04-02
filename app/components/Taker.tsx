@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import {
   Button,
   Card,
@@ -8,9 +9,16 @@ import {
 } from "@mui/material";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { CaseEnum } from "../page";
-const Maker = ({ setCase }) => {
-  const onSubmit = () => {
-    setCase(CaseEnum.step2);
+
+const Taker = ({ setCase }) => {
+  const [value, setValue] = useState("");
+
+  const handleChange = (event) => {
+    setValue(event.target.value);
+  };
+
+  const handleNext = () => {
+    setCase(CaseEnum.step3);
   };
 
   return (
@@ -31,33 +39,23 @@ const Maker = ({ setCase }) => {
             style={{ fontSize: 80, color: "#3f51b5", marginBottom: 10 }}
           />
           <Typography variant="h5" component="h2">
-            Maker
+            Taker
           </Typography>
           <TextField
-            label="Maker Value"
+            label="Taker Mortage Value"
             variant="outlined"
             fullWidth
             style={{ marginBottom: 20, marginTop: 20 }}
+            value={value}
+            onChange={handleChange}
           />
-          <TextField
-            label="Crypto Wallet"
-            variant="outlined"
-            fullWidth
-            style={{ marginBottom: 20 }}
-          />
-          <Typography variant="body1">
-            Provide: Block Chain contractor
-          </Typography>
-          <Typography variant="body1" style={{ marginTop: 20 }}>
-            Price: Base on what you input
-          </Typography>
         </CardContent>
       </Card>
-      <Button onClick={onSubmit} className="w-full" variant="contained">
-        Take Now
+      <Button variant="contained" fullWidth onClick={handleNext}>
+        Mortgage
       </Button>
     </div>
   );
 };
 
-export default Maker;
+export default Taker;
