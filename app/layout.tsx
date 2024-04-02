@@ -7,6 +7,7 @@ import Bg from "./assets/bg.svg";
 
 import clsx from "clsx";
 import SolanaWalletContextProvider from "./store/Solnan";
+import ThemeMatProvider from "./providers/ThemeMatProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,21 +23,23 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <SolanaWalletContextProvider>
-        <RootContextProvider>
-          <body
-            className={clsx(inter.className, " h-screen w-screen ")}
-            style={{
-              backgroundImage: `url(${Bg.src})`,
-              backgroundSize: `100% 100%`,
-            }}
-          >
-            <Hedaer />
+      <ThemeMatProvider>
+        <SolanaWalletContextProvider>
+          <RootContextProvider>
+            <body
+              className={clsx(inter.className, " h-screen w-screen ")}
+              style={{
+                backgroundImage: `url(${Bg.src})`,
+                backgroundSize: `100% 100%`,
+              }}
+            >
+              <Hedaer />
 
-            <div className="flex w-full">{children}</div>
-          </body>
-        </RootContextProvider>
-      </SolanaWalletContextProvider>
+              <div className="flex w-full">{children}</div>
+            </body>
+          </RootContextProvider>
+        </SolanaWalletContextProvider>
+      </ThemeMatProvider>
     </html>
   );
 }
