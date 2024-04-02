@@ -41,12 +41,10 @@ const Maker = () => {
             style={{ marginBottom: 20 }}
           />
           <Typography variant="body1">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec
-            odio. Praesent libero. Sed cursus ante dapibus diam.
+            Provide: Block Chain contractor 
           </Typography>
           <Typography variant="body1" style={{ marginTop: 20 }}>
-            Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget,
-            imperdiet nec, imperdiet iaculis, ipsum.
+            Price: Base on what you input
           </Typography>
         </CardContent>
       </Card>
