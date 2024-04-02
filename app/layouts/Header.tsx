@@ -11,7 +11,9 @@ const Hedaer = () => {
       <div>
         <img src={Logo.src} alt="logo" className="h-6" />
       </div>
-      <div>{/* <WalletMultiButton /> */}</div>
+      <div>
+        <WalletMultiButton />
+      </div>
     </header>
   );
 };
