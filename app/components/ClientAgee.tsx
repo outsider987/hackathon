@@ -7,7 +7,7 @@ import {
 } from "@mui/material";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
-const TakerAgee = ({ setCase }) => {
+const ClientAgee = ({ setCase }) => {
   return (
     <div>
       <Card
@@ -41,4 +41,4 @@ const TakerAgee = ({ setCase }) => {
     </div>
   );
 };
-export default TakerAgee;
+export default ClientAgee;

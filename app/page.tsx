@@ -1,10 +1,10 @@
 "use client";
-import Maker from "./components/Maker";
+import Experter from "./components/Experter";
 import { useState, Ref, useRef, useEffect } from "react";
-import Taker from "./components/Taker";
+import Client from "./components/Client";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useGlobalContext } from "./store/global";
-import TakerAgee from "./components/TakerAgee";
+import ClientAgee from "./components/ClientAgee";
 
 export enum CaseEnum {
   step1 = "step1",
@@ -41,9 +41,9 @@ export default function Home() {
   }, [currentCase]);
 
   const stepCompoents = {
-    step1: <Maker setCase={setCase} />,
-    step2: <Taker setCase={setCase} />,
-    step3: <TakerAgee setCase={setCase} />,
+    step1: <Experter setCase={setCase} />,
+    step2: <Client setCase={setCase} />,
+    step3: <ClientAgee setCase={setCase} />,
   };
 
   return (

@@ -1,10 +1,9 @@
 "use client";
 import React, { createContext, useState, useContext } from "react";
-
 // Create a new context
 const GlobalContext = createContext({
   status: "idle",
-  setStatus: (val) => {} ,
+  setStatus: (val) => {},
 });
 
 // Create a custom hook to use the context
@@ -12,7 +11,7 @@ export const useGlobalContext = () => useContext(GlobalContext);
 
 // Create a provider component
 export const GlobalProvider = ({ children }) => {
-  const [status, setStatus] = useState("idle"); // Initial status is 'idle'
+  const [status, setStatus] = useState("idle");
 
   return (
     <GlobalContext.Provider value={{ status, setStatus }}>
