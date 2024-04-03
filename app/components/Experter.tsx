@@ -8,7 +8,6 @@ import {
   Typography,
 } from "@mui/material";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import { CaseEnum } from "../page";
 import useProgram from "../hooks/useProgram";
 
 const Experter = ({ setCase }) => {
@@ -18,11 +17,11 @@ const Experter = ({ setCase }) => {
   const onSubmit = async (data) => {
     console.log(data);
 
-    const res = await sign({
-      platFormAccountKey: data.cryptoWallet,
-      amount: data.makerValue,
-    });
-    if (res) setCase(CaseEnum.step2);
+    // const res = await sign({
+    //   platFormAccountKey: data.cryptoWallet,
+    //   amount: data.makerValue,
+    // });
+    // if (res) setCase(CaseEnum.step2);
   };
 
   return (
@@ -43,7 +42,7 @@ const Experter = ({ setCase }) => {
             style={{ fontSize: 80, color: "#3f51b5", marginBottom: 10 }}
           />
           <Typography variant="h5" component="h2">
-            Maker
+            Experter
           </Typography>
           <form onSubmit={handleSubmit(onSubmit)}>
             <TextField
@@ -59,7 +58,7 @@ const Experter = ({ setCase }) => {
             />
             <TextField
               {...register("cryptoWallet")}
-              label="Crypto Wallet"
+              label="platFormAccountKey Wallet"
               variant="outlined"
               fullWidth
               style={{ marginBottom: 20 }}

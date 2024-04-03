@@ -8,7 +8,8 @@ import {
   Typography,
 } from "@mui/material";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import { CaseEnum } from "../page";
+import { CaseEnum } from "../enum";
+
 
 const Client = ({ setCase }) => {
   const [value, setValue] = useState("");

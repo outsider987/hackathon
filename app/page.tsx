@@ -5,12 +5,9 @@ import Client from "./components/Client";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useGlobalContext } from "./store/global";
 import ClientAgee from "./components/ClientAgee";
+import { CaseEnum } from "./enum";
 
-export enum CaseEnum {
-  step1 = "step1",
-  step2 = "step2",
-  step3 = "step3",
-}
+
 
 export default function Home() {
   const [currentCase, setCase] = useState("step1");
@@ -56,6 +53,7 @@ export default function Home() {
           <ArrowBackIcon />
         </div>
       )}
+      <div>role:</div>
       <h2 className=" m-auto text-xl font-extrabold text-center flex justify-center">
         status:{status}
       </h2>
