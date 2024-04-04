@@ -9,14 +9,29 @@ import {
 } from "@mui/material";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import useProgram from "../../hooks/useProgram";
+import Agree from "./Agree";
+import { useGlobalContext } from "@/app/store/global";
+import { ContractStatus } from "@/app/enum";
 
 const Experter = ({ ...props }): JSX.Element => {
-  const { sign } = useProgram();
+  const { sign, clientActivateCase } = useProgram();
+  const { setStatus } = useGlobalContext();
+  const { status } = useGlobalContext();
 
   const [value, setValue] = useState("");
 
   const handleChange = (event) => {
     setValue(event.target.value);
+  };
+
+  const onClientAcivate = async () => {
+    const res = await clientActivateCase();
+    if (res) setStatus(ContractStatus.Activated);
+  };
+
+  const components = {
+    PendingExperter: <Agree />,
+    Created: <div>Pending</div>,
   };
 
   return (
@@ -41,6 +56,7 @@ const Experter = ({ ...props }): JSX.Element => {
             Experter
           </Typography>
         </div>
+        {components[status]}
       </Card>
     </div>
   );

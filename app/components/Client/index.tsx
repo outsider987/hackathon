@@ -12,12 +12,16 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { useForm } from "react-hook-form";
 import Idle from "./Idle";
 import { useGlobalContext } from "@/app/store/global";
+import useProgram from "@/app/hooks/useProgram";
+import { ContractStatus } from "@/app/enum";
+import Agree from "./Agree";
 
 const Client = ({ ...props }) => {
-  const { status } = useGlobalContext();
+  const {status} = useGlobalContext();
   const components = {
     Idle: <Idle />,
     PendingExperter: <div className="text-yellow">Pending Experter agree</div>,
+    Created: <Agree/> ,
   };
 
   return (

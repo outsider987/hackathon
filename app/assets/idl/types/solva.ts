@@ -73,7 +73,7 @@ export type Solva = {
         {
           "name": "signer",
           "isMut": true,
-          "isSigner": true,
+          "isSigner": false,
           "isOptional": false
         },
         {
@@ -285,7 +285,7 @@ export const IDL: Solva = {
         {
           "name": "signer",
           "isMut": true,
-          "isSigner": true,
+          "isSigner": false,
           "isOptional": false
         },
         {

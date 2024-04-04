@@ -12,17 +12,18 @@ const Agree = () => {
     if (res) setStatus(ContractStatus.Created);
   };
   return (
-    <>
-      <div className="flex">
-        <Button onClick={() => setStatus(ContractStatus.Idle)}>Cacel</Button>
+    
+      <div className="flex w-full">
+        <Button  className="flex-1" onClick={() => setStatus(ContractStatus.Idle)}>Cacel</Button>
         <Button
-          onClick={() => setStatus(ContractStatus.Created)}
+        className="flex-1"
+          onClick={onAgree}
           variant="contained"
         >
           Agree
         </Button>
       </div>
-    </>
+    
   );
 };
 
