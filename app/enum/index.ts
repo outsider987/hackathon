@@ -1,5 +1,12 @@
-export enum CaseEnum {
-  step1 = "step1",
-  step2 = "step2",
-  step3 = "step3",
+export enum ContractStatus {
+  Idle = "Idle",
+  PendingExperter = "PendingExperter",
+  Created = "Created",
+  Canceled = "Canceled",
+  Activated = "Activated",
+  ForceClosed = "ForceClosed",
+  Compensated = "Compensated",
+  Completed = "Completed",
+  GotIncomed = "GotIncomed",
+  Closed = "Closed",
 }

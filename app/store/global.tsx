@@ -1,8 +1,9 @@
 "use client";
 import React, { createContext, useState, useContext } from "react";
+import { ContractStatus } from "../enum";
 // Create a new context
 const GlobalContext = createContext({
-  status: "idle",
+  status: ContractStatus.Idle,
   setStatus: (val) => {},
 });
 
@@ -11,7 +12,7 @@ export const useGlobalContext = () => useContext(GlobalContext);
 
 // Create a provider component
 export const GlobalProvider = ({ children }) => {
-  const [status, setStatus] = useState("idle");
+  const [status, setStatus] = useState(ContractStatus.Idle);
 
   return (
     <GlobalContext.Provider value={{ status, setStatus }}>
