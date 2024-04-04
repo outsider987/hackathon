@@ -12,4 +12,6 @@ export enum ContractStatus {
   ClientWaitForPlatformClose = "ClientWaitForPlatformClose",
   ClientForPlatformClosed = "ClientForPlatformClosed",
   WaitForClose = "WaitForClose",
+  ExperterWaitForPlatformClose = "ExperterWaitForPlatformClose",
+  
 }

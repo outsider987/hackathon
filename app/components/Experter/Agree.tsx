@@ -8,7 +8,7 @@ const Agree = () => {
   const { setStatus } = useGlobalContext();
   const { sign } = useProgram();
   const onAgree = async () => {
-    const res = await sign(LamportsConfig.caseAmount);
+    const res = await sign(LamportsConfig.caseAmount as any);
     if (res) setStatus(ContractStatus.Created);
   };
   return (
