@@ -7,14 +7,15 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+
+import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import useProgram from "../../hooks/useProgram";
 import Agree from "./Agree";
 import { useGlobalContext } from "@/app/store/global";
 import { ContractStatus } from "@/app/enum";
 
 const Experter = ({ ...props }): JSX.Element => {
-  const { sign, clientActivateCase } = useProgram();
+  const { sign, clientActivateCase, expertGetIncome } = useProgram();
   const { setStatus } = useGlobalContext();
   const { status } = useGlobalContext();
 
@@ -29,9 +30,36 @@ const Experter = ({ ...props }): JSX.Element => {
     if (res) setStatus(ContractStatus.Activated);
   };
 
+  const onexpertGetIncome = async () => {
+    try {
+      const res = await expertGetIncome();
+      if (res) setStatus(ContractStatus.WaitForClose);
+    } catch (error) {
+      setStatus(ContractStatus.WaitForClose);
+    }
+  };
+
   const components = {
     PendingExperter: <Agree />,
     Created: <div>Pending</div>,
+    Activated: (
+      <div className="flex flex-col gap-4">
+        <span>status:Start Working</span>
+        <Button
+          onClick={()=>setStatus(ContractStatus.ExperterWaitForPlatformClose)}
+        >
+        unexpected:  Force Close
+        </Button>
+      </div>
+    ),
+    ClientWaitForPlatformClose: <div>wait for mortaged</div>,
+    ForceClosed: <div>lose 0.3 sol</div>,
+    Completed: (
+      <Button onClick={onexpertGetIncome} variant="contained">
+        Get Income
+      </Button>
+    ),
+
   };
 
   return (
@@ -49,7 +77,7 @@ const Experter = ({ ...props }): JSX.Element => {
         className="flex flex-col items-center justify-between h-full"
       >
         <div>
-          <AccountCircleIcon
+          <ManageAccountsIcon
             style={{ fontSize: 80, color: "#3f51b5", marginBottom: 10 }}
           />
           <Typography variant="h5" component="h2">

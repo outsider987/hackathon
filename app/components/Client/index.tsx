@@ -17,11 +17,15 @@ import { ContractStatus } from "@/app/enum";
 import Agree from "./Agree";
 
 const Client = ({ ...props }) => {
-  const {status} = useGlobalContext();
+  const { status } = useGlobalContext();
   const components = {
     Idle: <Idle />,
     PendingExperter: <div className="text-yellow">Pending Experter agree</div>,
-    Created: <Agree/> ,
+    Activated: <Agree />,
+    Created:<Agree />,
+    ForceClosed:<div>get 1.3 sol back</div>,
+    Completed:<div>compelete contract</div>
+    // ClientWaitForPlatformClose: <Agree />,
   };
 
   return (

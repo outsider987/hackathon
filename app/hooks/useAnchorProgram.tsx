@@ -3,7 +3,7 @@ import { AnchorProvider, Idl, Program } from "@coral-xyz/anchor";
 import { useAnchorWallet, useConnection } from "@solana/wallet-adapter-react";
 import idlFile from "@/app/assets/idl/solva.json";
 
-const useAnchorProgram = (): Program<Idl> | null => {
+const useAnchorProgram = () => {
   const { connection } = useConnection();
   const wallet = useAnchorWallet();
   const [program, setProgram] = useState<Program | null>(null);
@@ -18,7 +18,7 @@ const useAnchorProgram = (): Program<Idl> | null => {
     }
   }, [wallet, connection, idl]);
 
-  return program;
+  return { connection, program };
 };
 
 export default useAnchorProgram;

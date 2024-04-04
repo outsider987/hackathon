@@ -5,16 +5,45 @@ import { Button } from "@mui/material";
 
 const Agree = () => {
   const { status, setStatus } = useGlobalContext();
-  const { sign, clientActivateCase } = useProgram();
+  const { sign, clientActivateCase, clientCompleteCase } = useProgram();
 
   const onClientAcivate = async () => {
-    const res = await clientActivateCase();
-    if (res) setStatus(ContractStatus.Activated);
+    try {
+      const res = await clientActivateCase();
+      if (res) setStatus(ContractStatus.Activated);
+    } catch (error) {
+      setStatus(ContractStatus.Activated);
+    }
+  };
+
+  const onClientCompleteCase = async () => {
+    try {
+      const res = await clientCompleteCase();
+      if (res) setStatus(ContractStatus.Completed);
+    } catch (error) {
+      setStatus(ContractStatus.Completed);
+    }
   };
   return (
-    <Button variant="contained" onClick={onClientAcivate}>
-      agree
-    </Button>
+    <>
+      {status === ContractStatus.Created ? (
+        <Button variant="contained" onClick={onClientAcivate}>
+          agree mortage
+        </Button>
+      ) : (
+        <div className="flex gap-2 w-full">
+          <Button
+          className="w-full"
+            onClick={() => setStatus(ContractStatus.ClientWaitForPlatformClose)}
+          >
+           unexpected: Force Close
+          </Button>
+          <Button className="w-full" variant="contained" onClick={onClientCompleteCase}>
+            Compelete
+          </Button>
+        </div>
+      )}
+    </>
   );
 };
 

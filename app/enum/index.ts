@@ -9,4 +9,7 @@ export enum ContractStatus {
   Completed = "Completed",
   GotIncomed = "GotIncomed",
   Closed = "Closed",
+  ClientWaitForPlatformClose = "ClientWaitForPlatformClose",
+  ClientForPlatformClosed = "ClientForPlatformClosed",
+  WaitForClose = "WaitForClose",
 }
