@@ -9,7 +9,6 @@ import {
 } from "@mui/material";
 
 import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
-import useProgram from "../../hooks/useProgram";
 import Agree from "./Agree";
 import { useGlobalContext } from "@/app/store/global";
 import { ContractStatus } from "@/app/enum";

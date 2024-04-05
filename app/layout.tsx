@@ -35,7 +35,7 @@ export default function RootLayout({
             >
               <Hedaer />
 
-              <div className="flex w-full">{children}</div>
+              <div className="flex w-full ">{children}</div>
             </body>
           </RootContextProvider>
         </SolanaWalletContextProvider>

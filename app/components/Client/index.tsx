@@ -12,7 +12,6 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { useForm } from "react-hook-form";
 import Idle from "./Idle";
 import { useGlobalContext } from "@/app/store/global";
-import useProgram from "@/app/hooks/useProgram";
 import { ContractStatus } from "@/app/enum";
 import Agree from "./Agree";
 
