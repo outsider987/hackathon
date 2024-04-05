@@ -10,8 +10,9 @@ const Agree = () => {
 
   const onClientAcivate = async () => {
     try {
-      const res = await clientActivateCase();
-      if (res) setStatus(ContractStatus.Activated);
+        const res = await clientActivateCase();
+        if (res) setStatus(ContractStatus.Activated);
+    //   setStatus(ContractStatus.Activated);
     } catch (error) {
       setStatus(ContractStatus.Activated);
     }
@@ -19,8 +20,9 @@ const Agree = () => {
 
   const onClientCompleteCase = async () => {
     try {
-      const res = await clientCompleteCase();
-      if (res) setStatus(ContractStatus.Completed);
+      //   const res = await clientCompleteCase();
+      //   if (res) setStatus(ContractStatus.Completed);
+      setStatus(ContractStatus.Completed);
     } catch (error) {
       setStatus(ContractStatus.Completed);
     }
@@ -34,12 +36,16 @@ const Agree = () => {
       ) : (
         <div className="flex gap-2 w-full">
           <Button
-          className="w-full"
+            className="w-full"
             onClick={() => setStatus(ContractStatus.ClientWaitForPlatformClose)}
           >
-           unexpected: Force Close
+            unexpected: Force Close
           </Button>
-          <Button className="w-full" variant="contained" onClick={onClientCompleteCase}>
+          <Button
+            className="w-full"
+            variant="contained"
+            onClick={onClientCompleteCase}
+          >
             Compelete
           </Button>
         </div>

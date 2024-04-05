@@ -20,11 +20,11 @@ const Client = ({ ...props }) => {
   const { status } = useGlobalContext();
   const components = {
     Idle: <Idle />,
-    PendingExperter: <div className="text-yellow">Pending Experter agree</div>,
+    PendingExpert: <div className="text-yellow">Pending Experter agree</div>,
     Activated: <Agree />,
-    Created:<Agree />,
-    ForceClosed:<div>get 1.3 sol back</div>,
-    Completed:<div>compelete contract</div>
+    Created: <Agree />,
+    ForceClosed: <div>get 1.3 sol back</div>,
+    Completed: <div>compelete contract</div>,
     // ClientWaitForPlatformClose: <Agree />,
   };
 
@@ -46,7 +46,15 @@ const Client = ({ ...props }) => {
           <AccountCircleIcon
             style={{ fontSize: 80, color: "#3f51b5", marginBottom: 10 }}
           />
-          <Typography variant="h5" component="h2">
+          <Typography
+            variant="h5"
+            component="h2"
+            className={
+              [ContractStatus.Activated, ContractStatus.Idle, ContractStatus.Created].includes(status)
+                ? "text-purple-600 underline font-bold"
+                : "text-white"
+            }
+          >
             Client
           </Typography>
         </div>

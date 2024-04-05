@@ -1,6 +1,5 @@
+import { LamportsConfig } from "@/app/config";
 import { ContractStatus } from "@/app/enum";
-import { LamportsConfig } from "@/app/hooks/config";
-import useProgram from "@/app/hooks/useProgram";
 import { useProgramContext } from "@/app/store/Propram";
 import { useGlobalContext } from "@/app/store/global";
 import { Button, CardContent } from "@mui/material";
@@ -11,20 +10,24 @@ const Agree = () => {
   const onAgree = async () => {
     const res = await sign(LamportsConfig.caseAmount as any);
     if (res) setStatus(ContractStatus.Created);
+
+    // setStatus(ContractStatus.Created);
   };
   return (
-    
-      <div className="flex w-full">
-        <Button  className="flex-1" onClick={() => setStatus(ContractStatus.Idle)}>Cacel</Button>
+    <div>
+      <div className="flex w-full gap-5">
         <Button
-        className="flex-1"
-          onClick={onAgree}
-          variant="contained"
+          variant="outlined"
+          className="flex-1"
+          onClick={() => setStatus(ContractStatus.Idle)}
         >
+          Cacel
+        </Button>
+        <Button className="flex-1" onClick={onAgree} variant="contained">
           Agree
         </Button>
       </div>
-    
+    </div>
   );
 };
 

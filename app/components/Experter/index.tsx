@@ -41,15 +41,15 @@ const Experter = ({ ...props }): JSX.Element => {
   };
 
   const components = {
-    PendingExperter: <Agree />,
-    Created: <div>Pending</div>,
+    PendingExpert: <Agree />,
+    Created: <div className="text-yellow">Pending</div>,
     Activated: (
       <div className="flex flex-col gap-4">
         <span>status:Start Working</span>
         <Button
-          onClick={()=>setStatus(ContractStatus.ExperterWaitForPlatformClose)}
+          onClick={() => setStatus(ContractStatus.ExperterWaitForPlatformClose)}
         >
-        unexpected:  Force Close
+          unexpected: Force Close
         </Button>
       </div>
     ),
@@ -60,7 +60,6 @@ const Experter = ({ ...props }): JSX.Element => {
         Get Income
       </Button>
     ),
-
   };
 
   return (
@@ -81,8 +80,18 @@ const Experter = ({ ...props }): JSX.Element => {
           <ManageAccountsIcon
             style={{ fontSize: 80, color: "#3f51b5", marginBottom: 10 }}
           />
-          <Typography variant="h5" component="h2">
-            Experter
+          <Typography
+            variant="h5"
+            component="h2"
+            className={
+              [ContractStatus.PendingExpert, ContractStatus.Completed].includes(
+                status
+              )
+                ? "text-purple-600 underline font-bold"
+                : "text-white"
+            }
+          >
+            Expert
           </Typography>
         </div>
         {components[status]}

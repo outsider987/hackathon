@@ -19,7 +19,7 @@ const Idle = () => {
         </Typography>
       </CardContent>
       <Button
-        onClick={() => setStatus(ContractStatus.PendingExperter)}
+        onClick={() => setStatus(ContractStatus.PendingExpert)}
         type="submit"
         className="w-full"
         variant="contained"

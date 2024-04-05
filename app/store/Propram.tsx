@@ -1,9 +1,9 @@
-'use client'
+"use client";
 import React, { createContext, useContext, useMemo, useState } from "react";
 import useAnchorProgram from "../hooks/useAnchorProgram";
 import * as anchor from "@coral-xyz/anchor";
 import { useAnchorWallet } from "@solana/wallet-adapter-react";
-import { AccountsConfig, LamportsConfig } from "../hooks/config";
+import { AccountsConfig, LamportsConfig, walletPublicKeys } from "../config";
 import { BN, web3 } from "@coral-xyz/anchor";
 
 const ProgramContext = createContext({
@@ -14,13 +14,18 @@ const ProgramContext = createContext({
   platformCloseCase: async (): Promise<any> => {},
   platformForceCloseCaseForClient: async (): Promise<any> => {},
   expertGetIncome: async (): Promise<any> => {},
+  indemniteeRecieveCompensation: async (): Promise<any> => {},
+  getClientBalance: async (): Promise<any> => {},
+  getExpertBalance: async (): Promise<any> => {},
+  getPlatFormBalance: async (): Promise<any> => {},
+  wallet: null,
 });
 
 export const useProgramContext = () => useContext(ProgramContext);
 
 export const ProgramProvider = ({ children }) => {
   const [isSigned, setIsSigned] = useState(false);
-  const { program } = useAnchorProgram();
+  const { program, connection } = useAnchorProgram();
 
   const SOL = anchor.web3.LAMPORTS_PER_SOL;
 
@@ -60,11 +65,10 @@ export const ProgramProvider = ({ children }) => {
   };
 
   const clientActivateCase = async () => {
-    debugger;
     const res = await program.methods
       .clientActivateCase(clientDepositLamports)
       .accounts({
-        recipient: dataAccount.publicKey,
+        DA: dataAccount.publicKey,
         signer: wallet.publicKey,
         dataAccount: dataAccount.publicKey,
       })
@@ -77,10 +81,11 @@ export const ProgramProvider = ({ children }) => {
     const res = await program.methods
       .clientCompleteCase()
       .accounts({
+        DA: dataAccount.publicKey,
         dataAccount: dataAccount.publicKey,
         signer: wallet.publicKey,
       })
-      .signers([])
+
       .rpc();
     console.log("Status: Completed");
     return res;
@@ -93,7 +98,7 @@ export const ProgramProvider = ({ children }) => {
         dataAccount: dataAccount.publicKey,
         signer: wallet.publicKey,
       })
-      .signers([])
+
       .rpc();
     console.log("Status: ForceClosed");
     return res;
@@ -103,10 +108,11 @@ export const ProgramProvider = ({ children }) => {
     const res = await program.methods
       .expertGetIncome()
       .accounts({
+        DA: dataAccount.publicKey,
         dataAccount: dataAccount.publicKey,
         signer: wallet.publicKey,
       })
-      .signers([])
+
       .rpc();
     console.log("Status: GetIncome");
     return res;
@@ -138,17 +144,54 @@ export const ProgramProvider = ({ children }) => {
     return res;
   };
 
+  const indemniteeRecieveCompensation = async () => {
+    const res = await program.methods
+      .indemniteeRecieveCompensation()
+      .accounts({
+        dataAccount: dataAccount.publicKey,
+        signer: wallet.publicKey,
+      })
+      .signers([])
+      .rpc();
+    console.log("Status: Received");
+    return res;
+  };
+
+  const getPlatFormBalance = async () => {
+    const platFormAccount = new web3.PublicKey(walletPublicKeys.platform);
+
+    const res = await connection.getBalance(platFormAccount);
+    return res;
+  };
+  const getExpertBalance = async () => {
+    const expertFormAccount = new web3.PublicKey(walletPublicKeys.experter);
+
+    const res = await connection.getBalance(expertFormAccount);
+    return res;
+  };
+
+  const getClientBalance = async () => {
+    const clientFormAccount = new web3.PublicKey(walletPublicKeys.client);
+
+    const res = await connection.getBalance(clientFormAccount);
+    return res;
+  };
+
   return (
     <ProgramContext.Provider
       value={{
         sign,
         clientActivateCase,
-
+        indemniteeRecieveCompensation,
         clientCompleteCase,
         platformForceCloseCaseForExpert,
         platformCloseCase,
         platformForceCloseCaseForClient,
         expertGetIncome,
+        getPlatFormBalance,
+        getExpertBalance,
+        getClientBalance,
+        wallet,
       }}
     >
       {children}

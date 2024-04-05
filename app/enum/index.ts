@@ -1,6 +1,6 @@
 export enum ContractStatus {
   Idle = "Idle",
-  PendingExperter = "PendingExperter",
+  PendingExpert = "PendingExpert",
   Created = "Created",
   Canceled = "Canceled",
   Activated = "Activated",

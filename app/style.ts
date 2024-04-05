@@ -14,7 +14,8 @@ const defaultTheme = createTheme({
           fontSize: 16,
           color: "#9730FFFF",
           textTransform: "initial",
-          background:'#9730FFFF'
+          background: "#9730FFFF",
+
         },
         outlined: {
           color: "#9730FFFF",
@@ -22,6 +23,7 @@ const defaultTheme = createTheme({
         },
         contained: {
           color: "white",
+          opacity: 1,
           backgroundColor: "#9730FFFF !important",
           "&:hover": {
             backgroundColor: "#9730FFFF",

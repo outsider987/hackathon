@@ -8,7 +8,7 @@ import {
   Typography,
 } from "@mui/material";
 
-import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
+import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
 
 import { useForm } from "react-hook-form";
 
@@ -19,40 +19,39 @@ import { useProgramContext } from "@/app/store/Propram";
 
 const ThridParty = ({ ...props }) => {
   const { status, setStatus } = useGlobalContext();
-  const { platformForceCloseCaseForClient,platformCloseCase,platformForceCloseCaseForExpert } = useProgramContext();
+  const {
+    platformForceCloseCaseForClient,
+    platformCloseCase,
+    platformForceCloseCaseForExpert,
+  } = useProgramContext();
 
   const onplatformForceCloseCaseForClient = async () => {
     try {
       const res = await platformForceCloseCaseForClient();
-      if(res)
-      setStatus(ContractStatus.ClientForPlatformClosed);
+      if (res) setStatus(ContractStatus.ClientForPlatformClosed);
     } catch (error) {
       setStatus(ContractStatus.ForceClosed);
     }
-   
   };
 
   const onplatformCloseCase = async () => {
     try {
       const res = await platformCloseCase();
-      if(res)
+      if (res) setStatus(ContractStatus.Closed);
+    } catch (error) {
       setStatus(ContractStatus.Closed);
     }
-    catch (error) {
-      setStatus(ContractStatus.Closed);
-    }
-  }
-  
+  };
+
   const onplatformForceCloseCaseForExpert = async () => {
     try {
       const res = await platformForceCloseCaseForExpert();
-      if(res)
-      setStatus(ContractStatus.ForceClosed);
+      if (res) setStatus(ContractStatus.ForceClosed);
     } catch (error) {
       setStatus(ContractStatus.ForceClosed);
     }
   };
-  
+
   const components = {
     ClientWaitForPlatformClose: (
       <Button variant="contained" onClick={onplatformForceCloseCaseForClient}>
@@ -68,7 +67,7 @@ const ThridParty = ({ ...props }) => {
       <Button variant="contained" onClick={onplatformForceCloseCaseForExpert}>
         Close
       </Button>
-    )
+    ),
   };
 
   return (
@@ -89,7 +88,19 @@ const ThridParty = ({ ...props }) => {
           <AccountBalanceIcon
             style={{ fontSize: 80, color: "#3f51b5", marginBottom: 10 }}
           />
-          <Typography variant="h5" component="h2">
+          <Typography
+            variant="h5"
+            component="h2"
+            className={
+              [
+                ContractStatus.WaitForClose,
+                ContractStatus.ClientWaitForPlatformClose,
+                ContractStatus.ExperterWaitForPlatformClose,
+              ].includes(status)
+                ? "text-purple-600 underline font-bold"
+                : "text-white"
+            }
+          >
             Platform
           </Typography>
         </div>

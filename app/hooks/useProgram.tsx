@@ -3,7 +3,7 @@ import useAnchorProgram from "./useAnchorProgram";
 import { useMemo, useState } from "react";
 import { BN, web3 } from "@coral-xyz/anchor";
 import * as anchor from "@coral-xyz/anchor";
-import { AccountsConfig, LamportsConfig } from "./config";
+import { AccountsConfig, LamportsConfig } from "../config";
 
 const useProgram = () => {
   const [isSigned, setIsSigned] = useState(false);
