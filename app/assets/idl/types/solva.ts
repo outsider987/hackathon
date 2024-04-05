@@ -73,6 +73,12 @@ export type Solva = {
         {
           "name": "signer",
           "isMut": true,
+          "isSigner": true,
+          "isOptional": false
+        },
+        {
+          "name": "recipient",
+          "isMut": true,
           "isSigner": false,
           "isOptional": false
         },
@@ -206,7 +212,7 @@ export type Solva = {
     }
   ],
   "metadata": {
-    "address": "Fm8tEEAWcRVkuirZMMkANDE3s5CMdt5Swb5w7TpyfvS1"
+    "address": "7wMzHUZbP7T1oKMQSpQ28e3uExyo117pHN5hUzuNcMNA"
   }
 };
 
@@ -285,6 +291,12 @@ export const IDL: Solva = {
         {
           "name": "signer",
           "isMut": true,
+          "isSigner": true,
+          "isOptional": false
+        },
+        {
+          "name": "recipient",
+          "isMut": true,
           "isSigner": false,
           "isOptional": false
         },
@@ -418,6 +430,6 @@ export const IDL: Solva = {
     }
   ],
   "metadata": {
-    "address": "Fm8tEEAWcRVkuirZMMkANDE3s5CMdt5Swb5w7TpyfvS1"
+    "address": "7wMzHUZbP7T1oKMQSpQ28e3uExyo117pHN5hUzuNcMNA"
   }
 };

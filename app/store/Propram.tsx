@@ -1,14 +1,29 @@
-import { useAnchorWallet } from "@solana/wallet-adapter-react";
-import useAnchorProgram from "./useAnchorProgram";
-import { useMemo, useState } from "react";
-import { BN, web3 } from "@coral-xyz/anchor";
+'use client'
+import React, { createContext, useContext, useMemo, useState } from "react";
+import useAnchorProgram from "../hooks/useAnchorProgram";
 import * as anchor from "@coral-xyz/anchor";
-import { AccountsConfig, LamportsConfig } from "./config";
+import { useAnchorWallet } from "@solana/wallet-adapter-react";
+import { AccountsConfig, LamportsConfig } from "../hooks/config";
+import { BN, web3 } from "@coral-xyz/anchor";
 
-const useProgram = () => {
+const ProgramContext = createContext({
+  sign: async ({ amount }: { amount: number }): Promise<any> => {},
+  clientActivateCase: async (): Promise<any> => {},
+  clientCompleteCase: async (): Promise<any> => {},
+  platformForceCloseCaseForExpert: async (): Promise<any> => {},
+  platformCloseCase: async (): Promise<any> => {},
+  platformForceCloseCaseForClient: async (): Promise<any> => {},
+  expertGetIncome: async (): Promise<any> => {},
+});
+
+export const useProgramContext = () => useContext(ProgramContext);
+
+export const ProgramProvider = ({ children }) => {
   const [isSigned, setIsSigned] = useState(false);
-  const SOL = anchor.web3.LAMPORTS_PER_SOL;
   const { program } = useAnchorProgram();
+
+  const SOL = anchor.web3.LAMPORTS_PER_SOL;
+
   const wallet = useAnchorWallet();
 
   const dataAccount = useMemo(() => web3.Keypair.generate(), []);
@@ -38,8 +53,7 @@ const useProgram = () => {
         })
         .signers([dataAccount])
         .rpc();
-      // setIsSigned(true);
-      console.log(res);
+      setIsSigned(true);
       console.log("Status: Created");
       return res;
     }
@@ -52,6 +66,7 @@ const useProgram = () => {
       .accounts({
         recipient: dataAccount.publicKey,
         signer: wallet.publicKey,
+        dataAccount: dataAccount.publicKey,
       })
       .rpc();
     console.log("Status: Activated");
@@ -123,15 +138,20 @@ const useProgram = () => {
     return res;
   };
 
-  return {
-    sign,
-    clientActivateCase,
-    clientCompleteCase,
-    platformForceCloseCaseForClient,
-    expertGetIncome,
-    platformCloseCase,
-    platformForceCloseCaseForExpert,
-  };
-};
+  return (
+    <ProgramContext.Provider
+      value={{
+        sign,
+        clientActivateCase,
 
-export default useProgram;
+        clientCompleteCase,
+        platformForceCloseCaseForExpert,
+        platformCloseCase,
+        platformForceCloseCaseForClient,
+        expertGetIncome,
+      }}
+    >
+      {children}
+    </ProgramContext.Provider>
+  );
+};

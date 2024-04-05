@@ -1,12 +1,13 @@
 import { ContractStatus } from "@/app/enum";
 import { LamportsConfig } from "@/app/hooks/config";
 import useProgram from "@/app/hooks/useProgram";
+import { useProgramContext } from "@/app/store/Propram";
 import { useGlobalContext } from "@/app/store/global";
 import { Button, CardContent } from "@mui/material";
 
 const Agree = () => {
   const { setStatus } = useGlobalContext();
-  const { sign } = useProgram();
+  const { sign } = useProgramContext();
   const onAgree = async () => {
     const res = await sign(LamportsConfig.caseAmount as any);
     if (res) setStatus(ContractStatus.Created);

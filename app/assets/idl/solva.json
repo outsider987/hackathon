@@ -73,6 +73,12 @@
         {
           "name": "signer",
           "isMut": true,
+          "isSigner": true,
+          "isOptional": false
+        },
+        {
+          "name": "recipient",
+          "isMut": true,
           "isSigner": false,
           "isOptional": false
         },
@@ -206,6 +212,6 @@
     }
   ],
   "metadata": {
-    "address": "Fm8tEEAWcRVkuirZMMkANDE3s5CMdt5Swb5w7TpyfvS1"
+    "address": "7wMzHUZbP7T1oKMQSpQ28e3uExyo117pHN5hUzuNcMNA"
   }
 }

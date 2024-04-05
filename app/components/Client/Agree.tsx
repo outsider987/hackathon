@@ -1,11 +1,12 @@
 import { ContractStatus } from "@/app/enum";
 import useProgram from "@/app/hooks/useProgram";
+import { useProgramContext } from "@/app/store/Propram";
 import { useGlobalContext } from "@/app/store/global";
 import { Button } from "@mui/material";
 
 const Agree = () => {
   const { status, setStatus } = useGlobalContext();
-  const { sign, clientActivateCase, clientCompleteCase } = useProgram();
+  const { sign, clientActivateCase, clientCompleteCase } = useProgramContext();
 
   const onClientAcivate = async () => {
     try {

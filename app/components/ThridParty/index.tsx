@@ -15,10 +15,11 @@ import { useForm } from "react-hook-form";
 import { useGlobalContext } from "@/app/store/global";
 import useProgram from "@/app/hooks/useProgram";
 import { ContractStatus } from "@/app/enum";
+import { useProgramContext } from "@/app/store/Propram";
 
 const ThridParty = ({ ...props }) => {
   const { status, setStatus } = useGlobalContext();
-  const { platformForceCloseCaseForClient,platformCloseCase,platformForceCloseCaseForExpert } = useProgram();
+  const { platformForceCloseCaseForClient,platformCloseCase,platformForceCloseCaseForExpert } = useProgramContext();
 
   const onplatformForceCloseCaseForClient = async () => {
     try {

@@ -1,3 +1,4 @@
+import { ProgramProvider } from "./Propram";
 import { WalletProvider } from "./Wallet";
 import { GlobalProvider } from "./global";
 
@@ -8,9 +9,11 @@ const RootContextProvider: React.FC<RootContextProviderProps> = ({
   children,
 }) => {
   return (
-    <GlobalProvider>
-      <WalletProvider>{children}</WalletProvider>
-    </GlobalProvider>
+    <ProgramProvider>
+      <GlobalProvider>
+        <WalletProvider>{children}</WalletProvider>
+      </GlobalProvider>
+    </ProgramProvider>
   );
 };
 export default RootContextProvider;

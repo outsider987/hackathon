@@ -13,9 +13,10 @@ import useProgram from "../../hooks/useProgram";
 import Agree from "./Agree";
 import { useGlobalContext } from "@/app/store/global";
 import { ContractStatus } from "@/app/enum";
+import { useProgramContext } from "@/app/store/Propram";
 
 const Experter = ({ ...props }): JSX.Element => {
-  const { sign, clientActivateCase, expertGetIncome } = useProgram();
+  const { sign, clientActivateCase, expertGetIncome } = useProgramContext();
   const { setStatus } = useGlobalContext();
   const { status } = useGlobalContext();
 
