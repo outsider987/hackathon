@@ -14,7 +14,8 @@ const Agree = () => {
         if (res) setStatus(ContractStatus.Activated);
     //   setStatus(ContractStatus.Activated);
     } catch (error) {
-      setStatus(ContractStatus.Activated);
+    //   setStatus(ContractStatus.Activated);
+    alert(error)
     }
   };
 
@@ -24,7 +25,7 @@ const Agree = () => {
       //   if (res) setStatus(ContractStatus.Completed);
       setStatus(ContractStatus.Completed);
     } catch (error) {
-      setStatus(ContractStatus.Completed);
+      alert(error);
     }
   };
   return (

@@ -18,6 +18,7 @@ const ProgramContext = createContext({
   getClientBalance: async (): Promise<any> => {},
   getExpertBalance: async (): Promise<any> => {},
   getPlatFormBalance: async (): Promise<any> => {},
+  getdataAccountBalance: async (): Promise<any> => {},
   wallet: null,
 });
 
@@ -108,7 +109,7 @@ export const ProgramProvider = ({ children }) => {
     const res = await program.methods
       .expertGetIncome()
       .accounts({
-        DA: dataAccount.publicKey,
+        DA: wallet.publicKey,
         dataAccount: dataAccount.publicKey,
         signer: wallet.publicKey,
       })
@@ -177,6 +178,11 @@ export const ProgramProvider = ({ children }) => {
     return res;
   };
 
+  const getdataAccountBalance = async () => {
+    const res = await connection.getBalance(dataAccount.publicKey);
+    return res;
+  };
+
   return (
     <ProgramContext.Provider
       value={{
@@ -192,6 +198,7 @@ export const ProgramProvider = ({ children }) => {
         getExpertBalance,
         getClientBalance,
         wallet,
+        getdataAccountBalance,
       }}
     >
       {children}
