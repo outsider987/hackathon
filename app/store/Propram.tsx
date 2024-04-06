@@ -122,6 +122,7 @@ export const ProgramProvider = ({ children }) => {
     const res = await program.methods
       .platformCloseCase()
       .accounts({
+        DA: dataAccount.publicKey,
         dataAccount: dataAccount.publicKey,
         signer: wallet.publicKey,
       })

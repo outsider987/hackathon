@@ -2,7 +2,7 @@
 export const LamportsConfig = {
   experterDepositLamports: 0.2,
   clientDepositLamports: 0.2,
-  caseAmount: 0.1,
+  caseAmount: 0.6,
 };
 
 export const walletPublicKeys = {

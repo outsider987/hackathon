@@ -1,17 +1,8 @@
 "use client";
 import React, { useState } from "react";
-import {
-  Button,
-  Card,
-  CardContent,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Button, Card, Typography } from "@mui/material";
 
 import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
-
-import { useForm } from "react-hook-form";
-
 import { useGlobalContext } from "@/app/store/global";
 import { ContractStatus } from "@/app/enum";
 import { useProgramContext } from "@/app/store/Propram";
@@ -31,7 +22,7 @@ const ThridParty = ({ ...props }) => {
     } catch (error) {
       // setStatus(ContractStatus.ForceClosed);
       console.log(error);
-alert(error);
+      alert(error);
     }
   };
 
@@ -40,7 +31,9 @@ alert(error);
       const res = await platformCloseCase();
       if (res) setStatus(ContractStatus.Closed);
     } catch (error) {
-      setStatus(ContractStatus.Closed);
+      console.log(error);
+      alert(error);
+      // setStatus(ContractStatus.Closed);
     }
   };
 
@@ -51,7 +44,7 @@ alert(error);
     } catch (error) {
       // setStatus(ContractStatus.ForceClosed);
       console.log(error);
-alert(error);
+      alert(error);
     }
   };
 

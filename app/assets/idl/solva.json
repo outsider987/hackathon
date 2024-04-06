@@ -204,7 +204,7 @@
         {
           "name": "signer",
           "isMut": true,
-          "isSigner": true,
+          "isSigner": false,
           "isOptional": false
         },
         {
@@ -228,7 +228,7 @@
         {
           "name": "signer",
           "isMut": true,
-          "isSigner": true,
+          "isSigner": false,
           "isOptional": false
         },
         {
@@ -242,6 +242,6 @@
     }
   ],
   "metadata": {
-    "address": "5XPpaCUyU5kPv8MX2KnZt8iFXqGLPeHK2rYaxSXE1VRV"
+    "address": "4DN2e9zBcoCA4SWm5gVpju7hHoWB7yUBk27BTt3SNBcS"
   }
 }

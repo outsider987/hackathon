@@ -204,7 +204,7 @@ export type Solva = {
         {
           "name": "signer",
           "isMut": true,
-          "isSigner": true,
+          "isSigner": false,
           "isOptional": false
         },
         {
@@ -228,7 +228,7 @@ export type Solva = {
         {
           "name": "signer",
           "isMut": true,
-          "isSigner": true,
+          "isSigner": false,
           "isOptional": false
         },
         {
@@ -242,7 +242,7 @@ export type Solva = {
     }
   ],
   "metadata": {
-    "address": "5XPpaCUyU5kPv8MX2KnZt8iFXqGLPeHK2rYaxSXE1VRV"
+    "address": "4DN2e9zBcoCA4SWm5gVpju7hHoWB7yUBk27BTt3SNBcS"
   }
 };
 
@@ -452,7 +452,7 @@ export const IDL: Solva = {
         {
           "name": "signer",
           "isMut": true,
-          "isSigner": true,
+          "isSigner": false,
           "isOptional": false
         },
         {
@@ -476,7 +476,7 @@ export const IDL: Solva = {
         {
           "name": "signer",
           "isMut": true,
-          "isSigner": true,
+          "isSigner": false,
           "isOptional": false
         },
         {
@@ -490,6 +490,6 @@ export const IDL: Solva = {
     }
   ],
   "metadata": {
-    "address": "5XPpaCUyU5kPv8MX2KnZt8iFXqGLPeHK2rYaxSXE1VRV"
+    "address": "4DN2e9zBcoCA4SWm5gVpju7hHoWB7yUBk27BTt3SNBcS"
   }
 };
