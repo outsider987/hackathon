@@ -35,7 +35,9 @@ const Experter = ({ ...props }): JSX.Element => {
       const res = await expertGetIncome();
       if (res) setStatus(ContractStatus.WaitForClose);
     } catch (error) {
-      setStatus(ContractStatus.WaitForClose);
+      // setStatus(ContractStatus.WaitForClose);
+      console.log(error);
+alert(error);
     }
   };
 

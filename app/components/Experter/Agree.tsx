@@ -8,8 +8,14 @@ const Agree = () => {
   const { setStatus } = useGlobalContext();
   const { sign } = useProgramContext();
   const onAgree = async () => {
-    const res = await sign(LamportsConfig.caseAmount as any);
-    if (res) setStatus(ContractStatus.Created);
+    try {
+      const res = await sign(LamportsConfig.caseAmount as any);
+      if (res) setStatus(ContractStatus.Created);
+    } catch (error) {
+      console.log(error);
+alert(error);
+    }
+   
 
     // setStatus(ContractStatus.Created);
   };

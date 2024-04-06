@@ -3,7 +3,7 @@ import React, { createContext, useContext, useMemo, useState } from "react";
 import useAnchorProgram from "../hooks/useAnchorProgram";
 import * as anchor from "@coral-xyz/anchor";
 import { useAnchorWallet } from "@solana/wallet-adapter-react";
-import { AccountsConfig, LamportsConfig, walletPublicKeys } from "../config";
+import { LamportsConfig, walletPublicKeys } from "../config";
 import { BN, web3 } from "@coral-xyz/anchor";
 
 const ProgramContext = createContext({
@@ -43,7 +43,7 @@ export const ProgramProvider = ({ children }) => {
   const sign = async ({ amount }: { amount: number }) => {
     const AmountLamports = new anchor.BN(amount * SOL);
 
-    const platFormAccount = new web3.PublicKey(AccountsConfig.platFormAccount);
+    const platFormAccount = new web3.PublicKey(walletPublicKeys.platform);
 
     if (program && wallet) {
       const res = await program.methods
@@ -86,7 +86,6 @@ export const ProgramProvider = ({ children }) => {
         dataAccount: dataAccount.publicKey,
         signer: wallet.publicKey,
       })
-
       .rpc();
     console.log("Status: Completed");
     return res;
@@ -109,7 +108,7 @@ export const ProgramProvider = ({ children }) => {
     const res = await program.methods
       .expertGetIncome()
       .accounts({
-        DA: wallet.publicKey,
+        DA: dataAccount.publicKey,
         dataAccount: dataAccount.publicKey,
         signer: wallet.publicKey,
       })

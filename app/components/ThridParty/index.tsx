@@ -29,7 +29,9 @@ const ThridParty = ({ ...props }) => {
       const res = await platformForceCloseCaseForClient();
       if (res) setStatus(ContractStatus.ClientForPlatformClosed);
     } catch (error) {
-      setStatus(ContractStatus.ForceClosed);
+      // setStatus(ContractStatus.ForceClosed);
+      console.log(error);
+alert(error);
     }
   };
 
@@ -47,7 +49,9 @@ const ThridParty = ({ ...props }) => {
       const res = await platformForceCloseCaseForExpert();
       if (res) setStatus(ContractStatus.ForceClosed);
     } catch (error) {
-      setStatus(ContractStatus.ForceClosed);
+      // setStatus(ContractStatus.ForceClosed);
+      console.log(error);
+alert(error);
     }
   };
 
