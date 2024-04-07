@@ -9,7 +9,7 @@ const Hedaer = () => {
   return (
     <header className="flex justify-between  items-center px-[8vw] bg-opacity-70 h-[72px]">
       <div>
-        <img src={Logo.src} alt="logo" className="h-6" />
+        <img src={Logo.src} alt="logo" />
       </div>
       <div>
         <WalletMultiButton />
